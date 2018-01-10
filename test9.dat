@@ -1,0 +1,12 @@
+size 5 5
+
+line 1 Ô 2 3 4 5
+line 2 6 4 1 4 6
+line 3 4 11 1 2 4
+line 4 6 6 5 6 4
+line 5 3 1 2 3 4
+line 6 4 2 7 2 9
+
+show
+
+start 
