@@ -35,21 +35,7 @@ int LittleAlgorithm::getMin(vector<vector<int>> matrix, int sel, check pos)
 
 void LittleAlgorithm::matrixProcedure(vector<vector<int>> matrix)
 {
-	/*cout << "-----------------------------------------\n";
-	cout << result.size() << "\n-------\n";
-	for (int i = 0; i < result.size(); i++)
-		*sout << "(" << result[i].first << ", " << result[i].second << ")\t";
-	*sout << endl;
-	int len = getResultSum();
-	double time = (float)(len)/(float)(aver_speed);
-	*sout << "Length of the intermediate way " << len << " km" << endl;
-	*sout << "Time Elapsed " << time << " hours" << endl;*/
-	/*for (int i = 0; i < matrix.size(); i++)
-	{
-		for (int j = 0; j < matrix[0].size(); j++)
-			cout << matrix[i][j] << "\t";
-		cout << "\n";
-	}*/
+
 	if (matrix.size() - 1 > 2) {
 		vector<int> vertexes;
 		for (int i = 0; i < result.size(); i++) {
@@ -84,8 +70,6 @@ void LittleAlgorithm::matrixProcedure(vector<vector<int>> matrix)
 	for (int i = 0; i < matrix.size() - 1; i++) {
 		int min = 0;
 		if ((min = getMin(matrix, i, check::Row)) == INT32_MAX) {
-			//showMatrix(matrix);
-			//*sout << endl << "Bad road" << endl;
 			return;
 		}
 		if ((min = getMin(matrix, i, check::Row)) != 0)
@@ -96,8 +80,6 @@ void LittleAlgorithm::matrixProcedure(vector<vector<int>> matrix)
 	for (int i = 0; i < matrix[matrix.size() - 1].size() - 1; i++) {
 		int min = 0;
 		if ((min = getMin(matrix, i, check::Col)) == INT32_MAX) {
-			//showMatrix(matrix);
-			//*sout << endl << "Bad road" << endl;
 			return;
 		}
 		if ((min = getMin(matrix, i, check::Col)) != 0)
@@ -124,14 +106,8 @@ void LittleAlgorithm::matrixProcedure(vector<vector<int>> matrix)
 				if (max == Max) Maxs.push_back(pair<int, int>(matrix[i][matrix.size() - 1], matrix[matrix.size() - 1][j]));
 				matrix[i][j] = 0;
 			}
-	//*sout << "Maxs - ";
-	//for (int i = 0; i < Maxs.size(); i++)
-		//*sout << Maxs[i].first << " " << Maxs[i].second << "\t";
-	//*sout << endl;
-	//showMatrix(matrix);
-	//*sout << endl;
+
 	if (Maxs.size() == 0) {
-	//*sout << "Bad road." << endl;
 		return;
 	}
 	
@@ -151,7 +127,6 @@ void LittleAlgorithm::matrixProcedure(vector<vector<int>> matrix)
 			return;
 		}
 		else {
-			//*sout << "Result way:       ";
 			*sout << "Intermediate way: \t\t\t";
 			for (int i = 0; i < result.size(); i++)
 				*sout << "(" << result[i].first << ", " << result[i].second << ")  ";
