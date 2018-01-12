@@ -1,0 +1,11 @@
+size 5 5
+
+line 1 0 2 3 4 5
+line 2 6 0 1 2 4
+line 3 4 11 0 2 4
+line 4 6 6 5 0 4
+line 5 3 1 2 3 0
+
+show
+
+start 
