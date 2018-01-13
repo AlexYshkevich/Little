@@ -20,7 +20,6 @@ int main(int argc, char *argv[])
 		method->setOut(argv[2]);
 	
 	method->LoadData(argv[1]);	
-	
 	system("pause");
 	return 0;
 }

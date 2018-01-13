@@ -9,37 +9,44 @@ using namespace std;
 
 Algorithm::Algorithm() 
 {
+	cout << "algirtm::algoritm()	";
 	data.clear();
 }
 
 Algorithm::Algorithm(std::vector<std::vector<int>> Data)
 {
+	cout << "algirtm::algoritm(vector)	";
 	LoadData(Data);
 }
 
 Algorithm::Algorithm(char* Path)
 {
+	cout << "algirtm::algoritm(char)	";
 	LoadData(Path);
 }
 
 int Algorithm::GetStrCount()
 {
+	cout << "algirtm::getsstrcount()	";
 	return rows;
 }
 
 int Algorithm::GetColCount()
 {
+	cout << "algirtm::getcolcount()	";
 	return cols;
 }
 
 bool Algorithm::LoadData(vector<vector<int>> Data)
 {
+	cout << "algirtm::loaddata(vector)	";
 	data = Data;
 	return true;
 }
 
 bool Algorithm::setOut(char* Path)
 {	
+	cout << "algirtm::setout()	";
 	ofstream *file = new ofstream(Path, ios_base::out);
 	if (!file->is_open())
 		return false;
@@ -49,6 +56,7 @@ bool Algorithm::setOut(char* Path)
 
 bool Algorithm::LoadData(char* Path)
 {
+	cout << "algirtm::loaddata(char)	";
 	ifstream file(Path, ios_base::in);
 	if (!file.is_open()) throw "Can't open data file";
 
@@ -81,7 +89,8 @@ bool Algorithm::LoadData(char* Path)
                         {                                                                                    
                                 case 0: //size                                                               
                                         int r, c;                                                            
-                                        sline >> r >> c;                                                     
+                                        sline >> r >> c;  
+										if (r == 1 && c == 1) return false;
                                         if (!sline.fail())                                                   
                                         {                                                                    
                                                 rows = r;                                                    
@@ -132,12 +141,12 @@ bool Algorithm::LoadData(char* Path)
 					{
 						for (int k = 0; k < cols; k++)
 						{
-							*sout << data[j][k] << " ";
+							*sout << data[j][k] << "	";
 						}
 						*sout << endl;
 					}
                                 break;                                                                       
-                                case 4:                                                                      
+                                case 4:  
                                 break;                                                                       
                                                                                                              
                         }                                                                                    
@@ -148,6 +157,7 @@ bool Algorithm::LoadData(char* Path)
 
 void Algorithm::showMatrix(vector<vector<int>> temp)
 {
+	cout << "algirtm::shiwmatrix()	";
         *sout << endl;
         *sout << "\t";
         for (int i = 0; i < temp[temp.size() - 1].size() - 1; i++) {
@@ -170,12 +180,21 @@ void Algorithm::showMatrix(vector<vector<int>> temp)
 
 bool Algorithm::validateData() 
 {
+	cout << "algirtm::validatedata()	";
 	return true;
 }
 
 void Algorithm::Run() 
 {
-	if (!validateData()) throw "Not valid data.";
+	cout << "algirtm::run()	";
+	try {
+		if (!validateData())
+			throw logic_error("Not valid data");
+	}
+	catch (logic_error) {
+		system("pause");
+		exit(0);
+	}
 	*sout << name << ":" << std::endl;
 }
 

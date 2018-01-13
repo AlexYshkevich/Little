@@ -9,6 +9,7 @@ LittleAlgorithm::LittleAlgorithm(char* Path):Algorithm(Path) {}
 
 void LittleAlgorithm::Run()
 {
+	cout << "littlealgirtm::run()	";
 	name = "Little algorithm";
 	Algorithm::Run();
 
@@ -17,6 +18,7 @@ void LittleAlgorithm::Run()
 
 int LittleAlgorithm::getMin(vector<vector<int>> matrix, int sel, check pos)
 {
+	cout << "littlealgirtm::getmin()	";
 	int min = INT32_MAX;
 	for (int i = 0; i < matrix[sel].size() - 1; i++)
 		switch (pos)
@@ -35,7 +37,7 @@ int LittleAlgorithm::getMin(vector<vector<int>> matrix, int sel, check pos)
 
 void LittleAlgorithm::matrixProcedure(vector<vector<int>> matrix)
 {
-
+	cout << "littlealgirtm::matrixprocedure()	";
 	if (matrix.size() - 1 > 2) {
 		vector<int> vertexes;
 		for (int i = 0; i < result.size(); i++) {
@@ -106,7 +108,6 @@ void LittleAlgorithm::matrixProcedure(vector<vector<int>> matrix)
 				if (max == Max) Maxs.push_back(pair<int, int>(matrix[i][matrix.size() - 1], matrix[matrix.size() - 1][j]));
 				matrix[i][j] = 0;
 			}
-
 	if (Maxs.size() == 0) {
 		return;
 	}
@@ -163,6 +164,7 @@ void LittleAlgorithm::matrixProcedure(vector<vector<int>> matrix)
 
 int LittleAlgorithm::getResultSum()
 {
+	cout << "littlealgirtm::getresult()	";
 	int sum = 0;
 	for (int i = 0; i < result.size(); i++)
 		sum += data[result[i].first - 1][result[i].second - 1];
@@ -171,11 +173,30 @@ int LittleAlgorithm::getResultSum()
 
 bool LittleAlgorithm::validateData()
 {
+	cout << "littlealgirtm::validatedata()	";
+
+	int summary = 0;
+	for (size_t i = 0; i < data.size(); i++)
+	{
+		for (size_t j = 0; j < data[i].size(); j++)
+		{
+			if (i != j) {
+				if (data[i][j] != data[j][i])
+					return false;
+				if (data[i][j] <=0)
+					return false;
+			}
+			if (i == j && data[i][j]==0) summary++;
+		}
+	}
+	if (summary != data.size()) return false;
+
+
+
 	for (int i = 0; i < data.size(); i++)
 		for (int j = 0; j < data[i].size(); j++)
 			if (data[i][j] == 0)
 				data[i][j] = INT32_MAX;
-
 	vector<vector<int>> temp(data);
 	for (int i = 0; i < data.size(); i++)
 		data[i].push_back(i + 1);
@@ -183,6 +204,5 @@ bool LittleAlgorithm::validateData()
 	for (int i = 0; i < data[0].size(); i++)
 		numeration.push_back(i + 1);
 	data.push_back(numeration);
-
 	return true;
 }
